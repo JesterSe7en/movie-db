@@ -1,6 +1,6 @@
 import React from "react";
 //Routing
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //Styles
 import { GlobalStyle } from "./GlobalStyles";
@@ -14,11 +14,17 @@ import NotFound from "./components/NotFound";
 const App = () => (
   <Router>
     <Header />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/:movieId" element={<Movie />} />
-      <Route path="/*" element={<NotFound />} />
-    </Routes>
+    <Switch>
+      <Route path="/">
+        <Home />
+      </Route>
+      <Route path="/:movieId">
+        <Movie />
+      </Route>
+      <Route path="/*">
+        <NotFound />
+      </Route>
+    </Switch>
     <GlobalStyle />
   </Router>
 );
